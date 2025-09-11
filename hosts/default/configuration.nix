@@ -107,6 +107,19 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes"];
 
+  # Automatic updating
+  # system.autoUpgrade.enable = true;
+  # system.autoUpgrade.dates = "weekly";
+
+  # Automatic garbage collection
+  # nix.gc = {
+  #   automatic = true;
+  #   dates = "daily";
+  #   options = "--delete-older-than 10d";
+  # };
+
+  # nix.settings.auto-optimise-store = true;
+
   home-manager = {
     extraSpecialArgs = { inherit inputs;};
     users = {
