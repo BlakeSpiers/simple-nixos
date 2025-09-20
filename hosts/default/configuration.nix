@@ -71,14 +71,6 @@
     isNormalUser = true;
     description = "Blake";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      git
-      vscode
-      neovim
-      gemini-cli
-      shopify-cli
-    #  thunderbird
-    ];
   };
 
   # Allow unfree packages
