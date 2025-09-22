@@ -40,19 +40,6 @@
     LC_TIME = "en_AU.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  # services.xserver.displayManager.gdm.enable = true;
-  # services.xserver.desktopManager.gnome.enable = true;
-
-  # Configure keymap in X11
-  # services.xserver.xkb = {
-  #   layout = "us";
-  #   variant = "";
-  # };
-
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -101,6 +88,9 @@
 
   # nix.settings.auto-optimise-store = true;
 
+  # Requirement for Sway
+  security.polkit.enable = true;
+
   home-manager = {
     extraSpecialArgs = { inherit inputs;};
     users = {
@@ -115,5 +105,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
-
 }
