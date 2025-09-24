@@ -51,6 +51,7 @@
     vscode
     gemini-cli
     shopify-cli
+    lsof
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -85,9 +86,11 @@
   #  /etc/profiles/per-user/blake/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "nvim";
   };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  services.wob.enable = true;
 }

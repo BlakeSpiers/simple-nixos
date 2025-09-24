@@ -16,6 +16,15 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Boot manager settings for larger monitor
+  # console = {
+  #   font = "ter-v32n";  # Large font for HiDPI/4K
+  #   # font = "ter-v32b";  # Large font for HiDPI/4K
+  #   packages = [ pkgs.terminus_font ];
+  #   earlySetup = true; # Ensures font is applied early in boot
+  # };
+  # boot.kernelParams = [ "video=HDMI-A-2:3840*2160@60" ];
+
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
