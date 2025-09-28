@@ -56,7 +56,7 @@
   wayland.windowManager.sway = {
     enable = true;
     config = rec {
-      # modifier = "Mod4";
+      modifier = "Mod4";
       # terminal = "kitty";
       startup = [
         {command = "code";}
@@ -85,21 +85,19 @@
       #   "2" = "HDMI-A-1";
       # };
 
-      keybindings = {
-        # Decrease volume
-        "XF86AudioLowerVolume" = "exec pamixer -d 5 && pamixer --get-volume | tee ~/.wobpipe > /dev/null";
-
-        # Increase volume
-        "XF86AudioRaiseVolume" = "exec pamixer -i 5 && pamixer --get-volume | tee ~/.wobpipe > /dev/null";
-
-        # Mute toggle (show 0 or 100 accordingly)
-        "XF86AudioMute" = "exec pamixer -t && (pamixer --get-mute | grep true && echo 0 || pamixer --get-volume) | tee ~/.wobpipe > /dev/null";
-
-        # Media control (optional)
-        "XF86AudioPlay"  = "exec playerctl play-pause";
-        "XF86AudioNext"  = "exec playerctl next";
-        "XF86AudioPrev"  = "exec playerctl previous";
-      };
     };
+
+    extraConfig = ''
+      # Decrease volume
+      bindsym XF86AudioLowerVolume exec pamixer -d 5 && pamixer --get-volume | tee ~/.wobpipe > /dev/null
+      # Increase volume
+      bindsym XF86AudioRaiseVolume exec pamixer -i 5 && pamixer --get-volume | tee ~/.wobpipe > /dev/null
+      # Mute toggle (show 0 or 100 accordingly)
+      bindsym XF86AudioMute exec pamixer -t && (pamixer --get-mute | grep true && echo 0 || pamixer --get-volume) | tee ~/.wobpipe > /dev/null
+      # Media control (optional)
+      bindsym XF86AudioPlay  exec playerctl play-pause
+      bindsym XF86AudioNext  exec playerctl next
+      bindsym XF86AudioPrev  exec playerctl previous
+    '';
   };  
 }
