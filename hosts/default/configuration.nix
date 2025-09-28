@@ -5,12 +5,12 @@
 { config, pkgs, inputs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./modules.nix
-      inputs.home-manager.nixosModules.default
-    ];
+  imports = [ 
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./modules.nix
+    inputs.home-manager.nixosModules.default
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -24,6 +24,7 @@
   #   earlySetup = true; # Ensures font is applied early in boot
   # };
   # boot.kernelParams = [ "video=HDMI-A-2:3840*2160@60" ];
+  boot.kernelParams = [ "video=HDMI-A-2:1920*1080@60" ];
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
