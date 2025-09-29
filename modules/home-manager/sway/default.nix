@@ -51,6 +51,10 @@
     pamixer
     playerctl
     wob
+
+    # gtk
+    adwaita-icon-theme
+    gnome-themes-extra
   ];
 
   wayland.windowManager.sway = {
@@ -100,4 +104,9 @@
       bindsym XF86AudioPrev  exec playerctl previous
     '';
   };  
+
+  gtk = {
+    enable = true;
+    theme.name = "Adwaita-dark";
+  };
 }
