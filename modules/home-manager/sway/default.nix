@@ -62,6 +62,13 @@
     config = rec {
       modifier = "Mod4";
       # terminal = "kitty";
+
+      # Discover references with `swaymsg -t get_tree | grep -i appName` and use `app_id` or `class`
+      assigns = {
+        "1" = [{ app_id = "^firefox$"; }];
+        "10" = [{ app_id = "^code$"; }];
+      };
+
       startup = [
         {command = "code";}
         {command = "firefox";}
@@ -83,14 +90,13 @@
         };
       };
 
-      # What do workspaces do?
       # config.workspaceOutput = {
       #   "1" = "HDMI-A-2";
       #   "2" = "HDMI-A-1";
       # };
-
     };
 
+    # Using extraConfig instead of keybinds to prevent overriding defaults
     extraConfig = ''
       # Decrease volume
       bindsym XF86AudioLowerVolume exec pamixer -d 5 && pamixer --get-volume | tee ~/.wobpipe > /dev/null
