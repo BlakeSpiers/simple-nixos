@@ -49,8 +49,9 @@
     git
     firefox
     vscode
-    gemini-cli
-    shopify-cli
+    claude-code
+    # gemini-cli
+    # shopify-cli
     lsof
   ];
 
