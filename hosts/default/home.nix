@@ -53,6 +53,7 @@
     # gemini-cli
     # shopify-cli
     lsof
+    nh
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
