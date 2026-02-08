@@ -1,9 +1,18 @@
 { config, pkgs, osConfig, ... }:
   let
-    # HDMI-A-2: 4K monitor (3840x2160) at 1.5x scale
-    hdmiA2 = {
+    # swaymsg -t get_outputs
+
+    # DP-2: 4K monitor (3840x2160) at 1.5x scale
+    dp2 = {
       width = 3840;
       height = 2160;
+      scale = 1.5;
+    };
+
+    # HDMI-A-2: 2K? T.V. (2560x1440) at 1.5x scale
+    hdmiA2 = {
+      width = 2560;
+      height = 1440;
       scale = 1.5;
     };
 
@@ -34,8 +43,8 @@
     };
 
     # Use the function
-    posA2 = "0 0"; # Primary at top-left
-    posA1Result = centerAlign hdmiA2 hdmiA1;
+    posDP2 = "0 0"; # Primary at top-left
+    posA1Result = centerAlign dp2 hdmiA1;
     posA1 = "${builtins.toString posA1Result.x} ${builtins.toString posA1Result.y}";
   in {
 
@@ -65,8 +74,8 @@
 
       # Discover references with `swaymsg -t get_tree | grep -i appName` and use `app_id` or `class`
       assigns = {
-        "1" = [{ app_id = "^firefox$"; }];
-        "10" = [{ app_id = "^code$"; }];
+        "1" = [{ app_id = "^code$"; }];
+        "4" = [{ app_id = "^firefox$"; }];
       };
 
       startup = [
@@ -78,9 +87,15 @@
 
       output = {
         # Primary display
+        DP-2 = {
+          scale = builtins.toString dp2.scale;
+          pos = posDP2;
+        };
+
+        # Mirror of DP-2
         HDMI-A-2 = {
           scale = builtins.toString hdmiA2.scale;
-          pos = posA2;
+          pos = posDP2;
         };
 
         HDMI-A-1 = {
@@ -90,10 +105,18 @@
         };
       };
 
-      # config.workspaceOutput = {
-      #   "1" = "HDMI-A-2";
-      #   "2" = "HDMI-A-1";
-      # };
+      workspaceOutputAssign = [
+        { workspace = "1"; output = "DP-2"; }
+        { workspace = "2"; output = "DP-2"; }
+        { workspace = "3"; output = "DP-2"; }
+        { workspace = "4"; output = "HDMI-A-1"; }
+        { workspace = "5"; output = "HDMI-A-1"; }
+        { workspace = "6"; output = "HDMI-A-1"; }
+        { workspace = "7"; output = "HDMI-A-1"; }
+        { workspace = "8"; output = "HDMI-A-1"; }
+        { workspace = "9"; output = "HDMI-A-1"; }
+        { workspace = "10"; output = "HDMI-A-1"; }
+      ];
     };
 
     # Using extraConfig instead of keybinds to prevent overriding defaults

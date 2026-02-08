@@ -48,6 +48,7 @@
     neovim
     git
     firefox
+    chromium
     vscode
     claude-code
     # gemini-cli
