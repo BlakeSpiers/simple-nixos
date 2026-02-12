@@ -51,6 +51,7 @@
     chromium
     vscode
     claude-code
+    obsidian
     # gemini-cli
     # shopify-cli
     lsof
