@@ -5,7 +5,7 @@
       enableBashIntegration = true;
       nix-direnv.enable = true;
       config = {
-        warn_timeout = "30s";
+        warn_timeout = "0s";
       };
     };
 

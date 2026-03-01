@@ -55,11 +55,17 @@
     wdisplays
     wlogout
     wofi
+    grim
+    slurp
 
     # audio controls
     pamixer
     playerctl
     wob
+
+    # file manager
+    thunar
+    gvfs
 
     # gtk
     adwaita-icon-theme
@@ -131,6 +137,13 @@
       bindsym XF86AudioPlay  exec playerctl play-pause
       bindsym XF86AudioNext  exec playerctl next
       bindsym XF86AudioPrev  exec playerctl previous
+      # Screenshots
+      bindsym Print exec grim ~/Pictures/screenshot-$(date +%Y%m%d-%H%M%S).png
+      bindsym Shift+Print exec grim -g "$(slurp)" ~/Pictures/screenshot-$(date +%Y%m%d-%H%M%S).png
+      # Logitech fn+F8 screenshot key sends Super+Shift+S
+      bindsym Mod4+Shift+s exec grim -g "$(slurp)" ~/Pictures/screenshot-$(date +%Y%m%d-%H%M%S).png
+      # File manager
+      bindsym Mod4+Shift+f exec thunar
     '';
   };  
 
