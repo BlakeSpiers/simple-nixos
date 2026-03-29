@@ -1,5 +1,8 @@
-{ pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
+let
+  swayCmd = "sway" + lib.optionalString (builtins.elem "nvidia" config.services.xserver.videoDrivers) " --unsupported-gpu";
+in
 {
   services.kmscon = {
     enable = true;
@@ -17,7 +20,7 @@
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd sway --remember --asterisks --user-menu";
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd \"${swayCmd}\" --remember --asterisks --user-menu";
         user = "greeter";
       };
     };
