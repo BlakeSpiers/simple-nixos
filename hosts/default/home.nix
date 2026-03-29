@@ -5,6 +5,7 @@
     ../../modules/home-manager/git
     ../../modules/home-manager/sway
     ../../modules/home-manager/direnv
+    ../../modules/home-manager/alacritty
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
