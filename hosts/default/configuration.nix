@@ -101,6 +101,9 @@
   # Requirement for Sway
   security.polkit.enable = true;
 
+  # Required for swaylock to authenticate via PAM
+  security.pam.services.swaylock = {};
+
   home-manager = {
     extraSpecialArgs = { inherit inputs;};
     users = {

@@ -72,6 +72,11 @@
     gnome-themes-extra
   ];
 
+  xdg.configFile."swaylock/config".text = ''
+    color=000000
+    show-failed-attempts
+  '';
+
   wayland.windowManager.sway = {
     enable = true;
     config = rec {
