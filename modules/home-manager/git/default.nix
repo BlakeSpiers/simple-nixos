@@ -1,10 +1,11 @@
 { config, pkgs, osConfig, ... }: {
   programs.git = {
     enable = true;
-    userName = "Blake Spiers";
-    userEmail = "blakespiers93@gmail.com";
-    extraConfig = {
+    settings = {
+      user.name = "Blake Spiers";
+      user.email = "blakespiers93@gmail.com";
       core.editor = "nvim";
+      init.defaultBranch = "main";
     };
   };
 }
