@@ -81,6 +81,7 @@
     ripgrep
     wget
     xclip
+    gh
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes"];
